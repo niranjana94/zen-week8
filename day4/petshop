@@ -1,0 +1,84 @@
+ use petshop
+switched to db petshop
+> db.pet.insertMany([{type:'Dog',color:'white',age:1},{type:'cat',color:'grey',age:0.2}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("5f5ba67bce80116840b11776"),
+                ObjectId("5f5ba67bce80116840b11777")
+        ]
+}
+> db.pet.find().pretty()
+{
+        "_id" : ObjectId("5f5ba67bce80116840b11776"),
+        "type" : "Dog",
+        "color" : "white",
+        "age" : 1
+}
+{
+        "_id" : ObjectId("5f5ba67bce80116840b11777"),
+        "type" : "cat",
+        "color" : "grey",
+        "age" : 0.2
+}
+
+
+ db.employee.insertMany([{name:'Mani',pay:20000},{name:'Ravi',pay:10000}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("5f5ba8f4ce80116840b11778"),
+                ObjectId("5f5ba8f4ce80116840b11779")
+        ]
+}
+> db.employee.find().pretty()
+{
+        "_id" : ObjectId("5f5ba8f4ce80116840b11778"),
+        "name" : "Mani",
+        "pay" : 20000
+}
+{
+        "_id" : ObjectId("5f5ba8f4ce80116840b11779"),
+        "name" : "Ravi",
+        "pay" : 10000
+}
+
+db.petstore.insertOne({storename:'Petshop',address:'59,Ananth Nagar',phone:'9989833388',state:'Tamilnadu',city:'Bangalore',pet_id:[ObjectId("5f5ba67bce80116840b11776"),ObjectId("5f5ba67bce80116840b11777")],employee_id:[
+                ObjectId("5f5ba8f4ce80116840b11778"),
+                ObjectId("5f5ba8f4ce80116840b11779")]});
+
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("5f5bab24ce80116840b1177a")
+}
+> db.petstore.find().pretty()
+{
+        "_id" : ObjectId("5f5bab24ce80116840b1177a"),
+        "storename" : "Petshop",
+        "address" : "59,Ananth Nagar",
+        "phone" : "9989833388",
+        "state" : "Tamilnadu",
+        "city" : "Bangalore",
+        "pet_id" : [
+                ObjectId("5f5ba67bce80116840b11776"),
+                ObjectId("5f5ba67bce80116840b11777")
+        ],
+        "employee_id" : [
+                ObjectId("5f5ba8f4ce80116840b11778"),
+                ObjectId("5f5ba8f4ce80116840b11779")
+        ]
+}
+
+ db.stocks.insertOne({pet_id:ObjectId("5f5ba67bce80116840b11776"),petstore_id: ObjectId("5f5bab24ce80116840b1177a"),quantity:2})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("5f5baf60ce80116840b1177b")
+}
+> db.stocks.find().pretty()
+{
+        "_id" : ObjectId("5f5baf60ce80116840b1177b"),
+        "pet_id" : ObjectId("5f5ba67bce80116840b11776"),
+        "petstore_id" : ObjectId("5f5bab24ce80116840b1177a"),
+        "quantity" : 2
+}
+
